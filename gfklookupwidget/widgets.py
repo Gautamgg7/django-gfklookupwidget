@@ -59,7 +59,8 @@ class GfkLookupWidget(django.forms.Widget):
             if not type_id:
                 continue
 
-            content_type = django.contrib.contenttypes.models.ContentType.objects.get(id=type_id)
+            content_type = django.contrib.contenttypes.models\
+                .ContentType.objects.get(id=type_id)
 
             # The URLs for the anchors used by showRelatedObjectLookupPopup
             # have the form of:
@@ -78,6 +79,10 @@ class GfkLookupWidget(django.forms.Widget):
                 continue
 
             urls[type_name] = url
+
+        # When default value is None, input box should be empty.
+        if value is None:
+            value = ""
 
         # JavaScript braces need to be doubled due to the string formatting.
         #
