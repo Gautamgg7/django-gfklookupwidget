@@ -16,7 +16,10 @@ import json
 
 from random import randint
 
-import django.core.urlresolvers
+try:
+    from django.urls import reverse, NoReverseMatch
+except ImportError:
+    from django.core.urlresolvers import reverse, NoReverseMatch
 import django.contrib.admin.templatetags.admin_static
 import django.forms
 
@@ -68,11 +71,11 @@ class GfkLookupWidget(django.forms.Widget):
             #     /<app_label>/<model>/?t=<pk_field_name>
             #     /myapp/foomodel/?t=id
             try:
-                url = django.core.urlresolvers.reverse(
+                url = reverse(
                     'admin:{app}_{model}_changelist'.format(
                         app=content_type.app_label,
                         model=content_type.model))
-            except django.core.urlresolvers.NoReverseMatch:
+            except NoReverseMatch:
                 # This content type isn't available in the admin, so we can't
                 # provide the lookup. This is common, so we'll just ignore this
                 # one.
