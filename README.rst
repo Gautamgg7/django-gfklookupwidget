@@ -78,7 +78,7 @@ And if you want to use it with an inline: ::
                     parent_field=myapp.models.MyModel._meta.get_field('content_type'),
                 )
 
-            return super(ArticleModuleInline, self).formfield_for_dbfield(db_field, **kwargs)
+            return super(MyModelInline, self).formfield_for_dbfield(db_field, **kwargs)
 
 
 Rationalization For This Code
