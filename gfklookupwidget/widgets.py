@@ -48,7 +48,7 @@ class GfkLookupWidget(django.forms.Widget):
 
         super(GfkLookupWidget, self).__init__(*args, **kwargs)
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         model = self.parent_field.model
         ct_field = self.parent_field.model._meta.get_field(self.ct_field_name)
         choices = ct_field.get_choices()
