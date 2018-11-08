@@ -19,8 +19,8 @@ class TaggedItem(models.Model):\n\
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n\
     object_id = gfklookupwidget.fields.GfkLookupField('content_type')\n\
     content_object = GenericForeignKey('content_type', 'object_id')\n\
-
-    def __str__(self):              # __unicode__ on Python 2\n\
+\
+    def __str__(self):\n\
         return self.tag" > example/models.py && \
     echo "from django.contrib import admin\n\
 import example.models\n\
