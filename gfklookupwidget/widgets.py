@@ -63,7 +63,7 @@ class GfkLookupWidget(django.forms.Widget):
                 continue
 
             content_type = django.contrib.contenttypes.models\
-                .ContentType.objects.get(id=type_id)
+                .ContentType.objects.get_for_id(type_id)
 
             # The URLs for the anchors used by showRelatedObjectLookupPopup
             # have the form of:
