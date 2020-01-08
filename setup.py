@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='django-gfklookupwidget',
-    version='1.0.7',
+    version='1.0.8',
     description=(
         'A widget to replace the object_id in a generic relation with a '
         'search link.'
