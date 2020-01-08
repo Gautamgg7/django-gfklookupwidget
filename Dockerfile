@@ -1,10 +1,11 @@
-FROM django:1.9.6
+FROM python:3.8.1-buster
 
-WORKDIR /usr/src/app
+WORKDIR /workdir
 
-COPY ./gfklookupwidget /usr/src/app/gfklookupwidget
+COPY ./gfklookupwidget /workdir/gfklookupwidget
 
-RUN django-admin.py startproject mysite . && \
+RUN pip install Django && \
+    django-admin.py startproject mysite . && \
     ./manage.py migrate && \
     echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'admin')" | python manage.py shell && \
     ./manage.py startapp example && \
