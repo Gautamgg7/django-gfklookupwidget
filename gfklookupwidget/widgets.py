@@ -110,6 +110,7 @@ class GfkLookupWidget(django.forms.Widget):
                     function gfklookupwidget_{uniq}_click($, element, event) {{
                         if (event) {{
                             event.preventDefault();
+                            event.stopPropagation();
                         }}
 
                         var urls = {urls};
